@@ -1,0 +1,19 @@
+// Mixins
+
+// Mask
+// Transform
+@mixin mask($icon) {
+  mask: url($icon) no-repeat 50% 50%;
+  -moz-mask: url($icon) no-repeat 50% 50%;
+  -ms-mask: url($icon) no-repeat 50% 50%;
+  -webkit-mask: url($icon) no-repeat 50% 50%;
+}
+
+// Transitions
+@mixin transition($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -ms-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}

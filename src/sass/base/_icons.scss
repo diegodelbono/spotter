@@ -1,0 +1,15 @@
+.icon {
+  background: white;
+  height: 2rem;
+  width: 2rem;
+
+  &--alert {
+    @include mask('../../assets/icons/i-alert.svg');
+    //mask-size: contain;
+  }
+
+  &--close {
+    @include mask('../../assets/icons/i-close.svg');
+    //mask-size: contain;
+  }
+}

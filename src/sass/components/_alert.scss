@@ -1,0 +1,146 @@
+$alert--radius: $radius-md;
+$alert--padding: $padding-md $padding-lg;
+
+$alert-icon--radius: $radius-circle;
+$alert-icon--size: 3rem;
+
+.alert {
+  border-radius: $alert--radius;
+  display: flex;
+  justify-content: space-between;
+  padding: $alert--padding;
+
+  &__icon {
+    border-radius: $alert-icon--radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //margin-right: 1.5rem;
+
+    height: $alert-icon--size;
+    width: $alert-icon--size;
+
+    div {
+      //border: 2px solid blue;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__item {
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    h2 {
+      margin-left: 1rem;
+    }
+
+
+    .alert-tag {
+      font-family: $font-family-bold;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      // border: 2px solid red;
+      text-transform: uppercase;
+      // transform: rotate(-90deg);
+      // rotate: 90deg;
+      position: absolute;
+      transform: rotate(-90deg);
+      top: 1.25rem;
+      right: 0;
+    }
+  }
+
+  // &__time {
+  //   margin-right: 1rem;
+  // }
+
+  &__btn {
+    @include transition(all 0.5s ease);
+    cursor: pointer;
+    margin-left: 3rem;
+  }
+}
+
+@each $name,
+$color in $alerts-colors {
+  .alert--#{$name} {
+    background: $color;
+
+    .alert__icon {
+      background: darken($color, 10%);
+    }
+
+    .alert__btn {
+      //border: 2px solid blue;
+
+      &:hover,
+      &:focus {
+        background: darken($color, 20%);
+      }
+    }
+  }
+}
+
+.time {
+  display: flex;
+
+  &__item {
+    //border: 2px solid blue;
+    position: relative;
+    display: flex;
+    margin-left: 1rem;
+
+    .number {
+      //border: 2px solid orange;
+      display: block;
+      width: 5rem;
+      text-align: right;
+      padding-right: 2rem;
+    }
+
+    .small {
+      //border: 2px solid green;
+      font-size: 12px;
+    }
+  }
+}
+
+
+.header {
+  position: absolute;
+  z-index: 20;
+}
+
+.alert--modal {
+  //border: 2px solid blue;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  border-radius: 0;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 4rem;
+  flex-direction: column;
+
+  .time {
+    margin: 6rem 0 2rem 0;
+  }
+
+  .alert__icon {
+    //border: 2px solid orange;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+  }
+
+  h2,
+  h2 span {
+    font-size: 6rem;
+  }
+}

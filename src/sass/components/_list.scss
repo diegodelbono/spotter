@@ -1,0 +1,9 @@
+$list--margin: $margin-lg 0;
+$list--gap: 2rem;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: $list--margin;
+  gap: $list--gap;
+}

@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  //margin-bottom: 1rem;
+  position: absolute;
+  z-index: 15;
+  top: 1.5rem;
+  //border: 2px solid green;
+
+  &__item {
+    //border: 2px solid red;
+    margin-right: 1rem;
+  }
+}

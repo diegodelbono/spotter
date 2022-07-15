@@ -1,0 +1,40 @@
+* {
+  color: white;
+  font-family: $font-family-regular;
+  font-size: 1rem;
+}
+
+
+h1,
+h2,
+h3 {
+  font-size: $font-size-large;
+  font-weight: normal;
+  margin: 0;
+}
+
+// strong {
+//   font-family: $font-family-bold;
+//   font-weight: normal;
+// }
+
+.font-base,
+.font-base * {
+  font-size: $font-size-base;
+}
+
+.font-small,
+.font-small * {
+  font-size: $font-size-small;
+}
+
+.font-large,
+.font-large * {
+  font-size: $font-size-large;
+}
+
+.font-bold,
+.font-bold * {
+  font-family: $font-family-bold;
+  font-weight: normal;
+}
