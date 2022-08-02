@@ -4,7 +4,7 @@ import AlertItem from "../alertItem/AlertItem";
 import Loading from "../loading/Loading";
 
 const AlertList = ({ url, actions }) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [alert, setAlert] = useState([]);
     const [displayedAlerts, setDisplayedAlerts] = useState([]);
 
@@ -12,37 +12,41 @@ const AlertList = ({ url, actions }) => {
         return displayedAlerts.some((x) => x === id);
     }
 
-    function connectWithApi() {
+    const [executing, setExecuting] = useState(false);
+
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     axios({
+    //         url: url,
+    //     })
+    //         .then((response) => {
+    //             console.log("oooo");
+    //             setAlert(response.data);
+    //         })
+    //         .catch((error) => {
+    //             setIsLoading(false);
+    //         });
+
+    //     setTimeout(() => {
+    //         setExecuting(!executing);
+    //     }, 1000);
+    // }, [executing]);
+
+    useEffect(() => {
+        setIsLoading(true);
         axios({
             url: url,
         })
             .then((response) => {
+                setIsLoading(false);
+                console.log("diego");
                 setAlert(response.data);
             })
             .catch((error) => {
                 console.log("error");
-                setIsLoading(false);
+                console.log("nnn");
+                // setIsLoading(false);
             });
-    }
-
-    useEffect(() => {
-        setIsLoading(true);
-        console.log("00000000");
-        //setIsLoading(true);
-        connectWithApi();
-        console.log("11111111");
-        //setIsLoading(false);
-        console.log("termino la con");
-        const interval = setInterval(() => {
-            connectWithApi();
-            console.log("3333");
-            setIsLoading(false);
-        }, 2000);
-
-        return () => {
-            console.log("333");
-            window.clearInterval(interval);
-        };
     }, []);
 
     function markAlertAsDisplayed(id) {
@@ -65,15 +69,13 @@ const AlertList = ({ url, actions }) => {
                         setDisplayed={() => markAlertAsDisplayed(item.id)}
                         id={item.id}
                         actions={actions}
+                        // withoutModal
                         setAlert={setAlert}
                         alert={alert}
                         item={item}
                         {...item}
                     />
                 ))}
-            {/* {console.log("alert", alert)}
-            {console.log("alert leng", alert.length)} */}
-            {alert.length === 0 && <>No hay</>}
         </div>
     );
 };

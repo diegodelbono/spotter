@@ -1,13 +1,9 @@
 import React from "react";
 import AlertList from "./../alertList/AlertList";
+import { alertsBaseUrl, alertsPauseUrl } from "../../utils/Utils";
 
 const Home = () => {
-    return (
-        <>
-            <h1>Listado de alertas</h1>
-            <AlertList />
-        </>
-    );
+    return <AlertList url={alertsBaseUrl} actions={true} />;
 };
 
 export default Home;

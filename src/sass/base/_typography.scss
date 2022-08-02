@@ -1,15 +1,17 @@
 * {
   color: white;
   font-family: $font-family-regular;
-  font-size: 1rem;
+  font-size: $font-size-small;
 }
 
 
 h1,
 h2,
 h3 {
-  font-size: $font-size-large;
+  font-size: $font-size-base;
+  font-family: $font-family-bold;
   font-weight: normal;
+
   margin: 0;
 }
 

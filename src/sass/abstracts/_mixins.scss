@@ -17,3 +17,23 @@
   -o-transition: $value;
   transition: $value;
 }
+
+// Position
+@mixin position ($position: fixed, $height: auto, $width: auto, $left: inherit, $top: inherit, $right: inherit, $bottom: inherit) {
+  position: $position;
+  bottom: $bottom;
+  height: $height;
+  left: $left;
+  top: $top;
+  right: $right;
+  width: $width;
+}
+
+// Hover
+@mixin hover-focus {
+
+  &:hover,
+  &:focus {
+    @content;
+  }
+}

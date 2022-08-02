@@ -1,9 +1,26 @@
 .nav {
-  //border: 2px solid blue;
+  display: flex;
+
+  //border: 2px solid orange;
   margin-left: 2rem;
 
   &__item {
     //border: 2px solid green;
-    margin-right: 1rem;
+    margin-right: 0rem;
+    text-decoration: none;
+
+    &.active {
+      font-family: $font-family-bold;
+      color: #ee9e2c;
+    }
+  }
+
+  .alert__icon {
+    background: #113762;
+
+    @include hover-focus {
+      //border: 2px solid red;
+      background: #1a4f8b;
+    }
   }
 }

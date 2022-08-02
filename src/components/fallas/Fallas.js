@@ -1,13 +1,10 @@
-import React from "react";
-// import AlertList from "./../alertList/AlertList";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import AlertList from "./../alertList/AlertList";
+import { alertsFailedUrl } from "../../utils/Utils";
 
 const Fallas = () => {
-    return (
-        <>
-            <h1>Listado de fallas</h1>
-            {/* <AlertList /> */}
-        </>
-    );
+    return <AlertList url={alertsFailedUrl} actions={false} />;
 };
 
 export default Fallas;

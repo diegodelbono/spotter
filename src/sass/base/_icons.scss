@@ -1,10 +1,20 @@
 .icon {
   background: white;
-  height: 2rem;
-  width: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
 
-  &--alert {
-    @include mask('../../assets/icons/i-alert.svg');
+  &--list {
+    @include mask('../../assets/icons/i-list.svg');
+    //mask-size: contain;
+  }
+
+  &--open {
+    @include mask('../../assets/icons/i-open.svg');
+    //mask-size: contain;
+  }
+
+  &--failed {
+    @include mask('../../assets/icons/i-failed.svg');
     //mask-size: contain;
   }
 

@@ -51,14 +51,15 @@ $alert-icon--size: 3rem;
     }
   }
 
-  // &__time {
-  //   margin-right: 1rem;
-  // }
+  &__time {
+    margin-right: 2rem;
+    //border: 2px solid orange;
+  }
 
   &__btn {
     @include transition(all 0.5s ease);
     cursor: pointer;
-    margin-left: 3rem;
+    margin-left: 1rem;
   }
 }
 
@@ -92,9 +93,10 @@ $color in $alerts-colors {
     margin-left: 1rem;
 
     .number {
+      // border: 2px solid blue;
       //border: 2px solid orange;
       display: block;
-      width: 5rem;
+      min-width: 7rem;
       text-align: right;
       padding-right: 2rem;
     }
@@ -142,5 +144,19 @@ $color in $alerts-colors {
   h2,
   h2 span {
     font-size: 6rem;
+  }
+}
+
+
+.alert--default {
+  //border: 2px solid red;
+  background: #113762;
+
+  .alert__icon {
+    display: none;
+  }
+
+  .time__item {
+    padding-right: 2rem;
   }
 }

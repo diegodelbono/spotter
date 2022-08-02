@@ -4,6 +4,6 @@ $list--gap: 2rem;
 .list {
   display: flex;
   flex-direction: column;
-  margin: $list--margin;
+  //margin: $list--margin;
   gap: $list--gap;
 }
