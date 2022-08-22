@@ -1,45 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { alertsFailedUrl, alertsOpenUrl } from "../../utils/Utils";
+import { alertsOpenUrlCount, alertsFailedUrlCount } from "../../utils/Utils";
 
 const Navigation = () => {
-    // useEffect(() => {
-    //     //setIsLoading(true);
-    //     axios({
-    //         url: alertsFailedUrl,
-    //     })
-    //         .then((response) => {
-    //             console.log("hola");
-    //             console.log("data", response.data);
-    //             //setAlert(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log("bbbb");
-    //             // setIsLoading(false);
-    //         });
-    // });
+    const [alertsOpenCount, setAlertsOpenCount] = useState(undefined);
+    const [alertsFailedCount, setAlertsFailedCount] = useState(undefined);
 
-    // const hasAlerts = async (alertUrl) => {
-    //     //setIsLoading(true);
-    //     axios({
-    //         url: alertUrl,
-    //     }).then((response) => {
-    //         const data = response.data;
-    //         //console.log("dataaaaaaaaaaaaa", data);
+    function connectWithApi(msg) {
+        axios({
+            url: alertsOpenUrlCount,
+        })
+            .then((response) => {
+                setAlertsOpenCount(response.data.count);
+            })
+            .catch((error) => {
+                console.log("error");
+            });
+    }
 
-    //         if (data.length > 0) {
-    //             //console.log("yeeees");
-    //             return "nav__item--active";
-    //         }
-    //         // console.log("hola");
-    //         // console.log("cantidad", response.data);
-    //         //setAlert(response.data);
-    //     });
+    useEffect(() => {
+        connectWithApi();
+        const interval = setInterval(() => {
+            connectWithApi();
+        }, 2000);
 
-    //     // console.log("alertUrl", alertUrl);
-    //     // return alertUrl;
-    // };
+        return () => {
+            window.clearInterval(interval);
+        };
+    }, []);
 
     return (
         <div className="nav">
@@ -48,13 +37,16 @@ const Navigation = () => {
                     <div className="icon icon--list" />
                 </div>
             </NavLink>
-            <NavLink className="nav__item" to="/Fallas">
+            <NavLink className={`nav__item`} to="/Fallas">
                 <div className="alert__icon alert__btn">
+                    {/* {setItemActives(stateItems)} */}
+                    {/* ++++ {alertsFailedCount} ++++ */}
                     <div className="icon icon--failed" />
                 </div>
             </NavLink>
-            <NavLink className={`nav__item`} to="/Open">
+            <NavLink className={`nav__item ${alertsOpenCount > 0 ? "nav__item--active" : ""}`} to="/Open">
                 <div className="alert__icon alert__btn">
+                    <span className="count">{alertsOpenCount}</span>
                     <div className="icon icon--open" />
                 </div>
             </NavLink>
@@ -63,7 +55,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-{
-    /* <NavLink className={`nav__item ${hasAlerts(alertsOpenUrl)}`} to="/Open"></NavLink> */
-}

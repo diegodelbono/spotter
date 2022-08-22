@@ -7,7 +7,7 @@ const AlertModal = ({ id, status, client, zone, time, onTimerChange }) => {
     useEffect(() => {
         setTimeout(function () {
             setshowModal(false);
-        }, 2000);
+        }, 5000);
     }, []);
     return (
         <>

@@ -27,10 +27,12 @@ const AlertItem = ({
     function onTimerChange(newTime) {
         const maxAllowMin = 5;
         const mediumAllowMin = 3;
+        const endAllowMin = 7;
 
         if (newTime.h > 0) {
             setAlertClass("danger");
             if (!wasDisplayed) {
+                console.log("entro bbbbb");
                 setDisplay(true);
                 setDisplayed();
             }
@@ -39,8 +41,10 @@ const AlertItem = ({
         if (newTime.m >= maxAllowMin) {
             setAlertClass("danger");
             if (!wasDisplayed) {
-                setDisplay(true);
-                setDisplayed();
+                if (newTime.m < endAllowMin) {
+                    setDisplay(true);
+                    setDisplayed();
+                }
             }
             return;
         }
@@ -58,8 +62,8 @@ const AlertItem = ({
     const underClick = async (type) => {
         //("alert----", alert);
 
-        // const alerts = alert.filter((i) => i.id !== item.id);
-        // setAlert(alerts);
+        const alerts = alert.filter((i) => i.id !== item.id);
+        setAlert(alerts);
 
         //console.log("alerts ***", alerts);
 
@@ -89,6 +93,7 @@ const AlertItem = ({
     };
     // const initial
     const finalMomentDay = moment(event_paused_date).format("DD MM YYYY, h:mma");
+    //const timeMoment = moment(trigger_date_time).format("DD MM YYYY, h:mma");
 
     return (
         <>
@@ -126,7 +131,7 @@ const AlertItem = ({
                 </div>
             </div>
 
-            {/* {display && (
+            {display && (
                 <AlertModal
                     id={item.id}
                     status={alertClass}
@@ -135,7 +140,7 @@ const AlertItem = ({
                     time={trigger_date_time}
                     onTimerChange={onTimerChange}
                 />
-            )} */}
+            )}
         </>
     );
 };

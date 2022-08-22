@@ -13,6 +13,27 @@
       font-family: $font-family-bold;
       color: #ee9e2c;
     }
+
+    &--active {
+      position: relative;
+
+      .alert__btn {
+        border: 2px solid $danger;
+
+        .count {
+          background: $danger;
+          position: absolute;
+          top: -0.5rem;
+          right: -0.5rem;
+          height: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 1.5rem;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 
   .alert__icon {

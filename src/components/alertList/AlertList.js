@@ -27,20 +27,20 @@ const AlertList = ({ url, actions }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log("00000000");
+        //console.log("00000000");
         //setIsLoading(true);
         connectWithApi();
-        console.log("11111111");
+        //console.log("11111111");
         //setIsLoading(false);
-        console.log("termino la con");
+        //console.log("termino la con");
         const interval = setInterval(() => {
             connectWithApi();
-            console.log("3333");
+            //console.log("3333");
             setIsLoading(false);
         }, 2000);
 
         return () => {
-            console.log("333");
+            //console.log("333");
             window.clearInterval(interval);
         };
     }, []);
