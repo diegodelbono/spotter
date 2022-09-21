@@ -4,7 +4,7 @@ import Timer from "../timer/Timer";
 import axios from "axios";
 import moment from "moment";
 
-import { FAILED, OPEN, alertsPauseUrl } from "../../utils/Utils";
+import { FAILED, OPEN } from "../../utils/Utils";
 
 const AlertItem = ({
     zone_name,
@@ -19,10 +19,7 @@ const AlertItem = ({
     event_paused_date,
 }) => {
     const [alertClass, setAlertClass] = useState("caution");
-    //const [alert, setAlert] = useState([]);
     const [display, setDisplay] = useState(false);
-
-    // console.log("zzz", actions);
 
     function onTimerChange(newTime) {
         const maxAllowMin = 5;
@@ -32,7 +29,6 @@ const AlertItem = ({
         if (newTime.h > 0) {
             setAlertClass("danger");
             if (!wasDisplayed) {
-                console.log("entro bbbbb");
                 setDisplay(true);
                 setDisplayed();
             }
@@ -60,12 +56,8 @@ const AlertItem = ({
     }
 
     const underClick = async (type) => {
-        //("alert----", alert);
-
         const alerts = alert.filter((i) => i.id !== item.id);
         setAlert(alerts);
-
-        //console.log("alerts ***", alerts);
 
         function identifyType() {
             if (type == 1) {
@@ -91,9 +83,9 @@ const AlertItem = ({
                 console.log("error", error);
             });
     };
+
     // const initial
     const finalMomentDay = moment(event_paused_date).format("DD MM YYYY, h:mma");
-    //const timeMoment = moment(trigger_date_time).format("DD MM YYYY, h:mma");
 
     return (
         <>

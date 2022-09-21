@@ -27,20 +27,13 @@ const AlertList = ({ url, actions }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        //console.log("00000000");
-        //setIsLoading(true);
         connectWithApi();
-        //console.log("11111111");
-        //setIsLoading(false);
-        //console.log("termino la con");
         const interval = setInterval(() => {
             connectWithApi();
-            //console.log("3333");
             setIsLoading(false);
         }, 2000);
 
         return () => {
-            //console.log("333");
             window.clearInterval(interval);
         };
     }, []);
@@ -71,8 +64,6 @@ const AlertList = ({ url, actions }) => {
                         {...item}
                     />
                 ))}
-            {/* {console.log("alert", alert)}
-            {console.log("alert leng", alert.length)} */}
             {alert.length === 0 && <>No hay</>}
         </div>
     );

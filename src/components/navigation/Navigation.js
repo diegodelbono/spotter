@@ -19,10 +19,24 @@ const Navigation = () => {
             });
     }
 
+    function connectApiFailed(msg) {
+        axios({
+            url: alertsFailedUrlCount,
+        })
+            .then((response) => {
+                setAlertsFailedCount(response.data.count);
+            })
+            .catch((error) => {
+                console.log("error");
+            });
+    }
+
     useEffect(() => {
         connectWithApi();
+        connectApiFailed();
         const interval = setInterval(() => {
             connectWithApi();
+            connectApiFailed();
         }, 2000);
 
         return () => {
@@ -37,10 +51,9 @@ const Navigation = () => {
                     <div className="icon icon--list" />
                 </div>
             </NavLink>
-            <NavLink className={`nav__item`} to="/Fallas">
+            <NavLink className={`nav__item ${alertsFailedCount > 0 ? "nav__item--active" : ""}`} to="/Fallas">
                 <div className="alert__icon alert__btn">
-                    {/* {setItemActives(stateItems)} */}
-                    {/* ++++ {alertsFailedCount} ++++ */}
+                    <span className="count">{alertsFailedCount}</span>
                     <div className="icon icon--failed" />
                 </div>
             </NavLink>

@@ -51,14 +51,7 @@ const Timer = ({ timer, onChange }) => {
                             <span className="number"> {time.s}</span> <span className="alert-tag">seg</span>
                         </div>
                     </div>
-
-                    {/* {time.h > 0 && (
-                        <>
-                        {time.h}
-                        </>
-                    ):{time.m}: {time.s} */}
                 </span>
-                {/* <span className="alert-tag">Time</span> */}
             </div>
         </>
     );

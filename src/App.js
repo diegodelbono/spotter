@@ -1,5 +1,4 @@
 import React from "react";
-// import AlertList from "./components/alertList/AlertList";
 import Header from "./components/header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
