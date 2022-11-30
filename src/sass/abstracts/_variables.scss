@@ -8,14 +8,22 @@ $primary: $blue;
 $secondary: $red;
 
 // Alerts
-$danger: #e52e4c !default;
+// $danger: #e52e4c !default;
+// $warning: #f59d20 !default;
+// $caution: #e8db25 !default;
+
+$sos: #e52e4c !default;
+$danger: #e5682e !default;
 $warning: #f59d20 !default;
 $caution: #e8db25 !default;
+
+
 
 $alerts-colors: (
   "danger": $danger,
   "warning": $warning,
   "caution": $caution,
+  "sos": $sos
 );
 
 // Fonts

@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import AlertItem from "../alertItem/AlertItem";
+import AlertDisabled from "../alertDisabled/AlertDisabled";
 import Loading from "../loading/Loading";
 
-const AlertList = ({ url, actions }) => {
+const AlertListDisabled = ({ url, actions }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [alert, setAlert] = useState([]);
-  const [displayedAlerts, setDisplayedAlerts] = useState([]);
-
-  function wasAlertDisplayed(id) {
-    return displayedAlerts.some((x) => x === id);
-  }
 
   function connectWithApi() {
     axios({
@@ -38,35 +33,26 @@ const AlertList = ({ url, actions }) => {
     };
   }, []);
 
-  function markAlertAsDisplayed(id) {
-    if (!wasAlertDisplayed(id)) {
-      setDisplayedAlerts((prev) => {
-        return [...prev, id];
-      });
-    }
-  }
-
   return (
     <div className="list">
       {isLoading && <Loading />}
       {alert
-        .sort((a, b) => (a.trigger_date_time > b.trigger_date_time ? 1 : -1))
+        .sort((a, b) => (a.event_date > b.event_date ? -1 : 1))
         .map((item) => (
-          <AlertItem
-            key={item.id}
-            wasDisplayed={wasAlertDisplayed(item.id)}
-            setDisplayed={() => markAlertAsDisplayed(item.id)}
-            id={item.id}
-            actions={actions}
+          <AlertDisabled
+            key={item.event_id}
+            name={item.event_client}
+            severity={item.event_severity}
+            date={item.event_date}
+            id={item.event_id}
             setAlert={setAlert}
             alert={alert}
             item={item}
             {...item}
           />
         ))}
-      {alert.length === 0 && <>No hay</>}
     </div>
   );
 };
 
-export default AlertList;
+export default AlertListDisabled;

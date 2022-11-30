@@ -48,6 +48,15 @@ $alert-icon--size: 3rem;
       transform: rotate(-90deg);
       top: 1.25rem;
       right: 0;
+
+      &--inline {
+        //border: 2px solid blue;
+        transform: none;
+        position: relative;
+        height: fit-content;
+        margin-right: 2rem;
+        color: #86b1e1;
+      }
     }
   }
 
@@ -60,6 +69,30 @@ $alert-icon--size: 3rem;
     @include transition(all 0.5s ease);
     cursor: pointer;
     margin-left: 1rem;
+  }
+
+  &__close {
+    cursor: pointer;
+    //border: 2px solid red;
+    //width: 1rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .icon {
+      background: #86b1e1;
+      @include transition(all 0.5s ease);
+
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &:hover {
+      .icon {
+        background: white;
+      }
+    }
   }
 }
 
@@ -81,6 +114,7 @@ $color in $alerts-colors {
       }
     }
   }
+
 }
 
 .time {
@@ -158,5 +192,23 @@ $color in $alerts-colors {
 
   .time__item {
     padding-right: 2rem;
+  }
+}
+
+// .alert--disabled {
+//   background: #010c17;
+//   //border: 2px solid red;
+
+//   * {
+//     color: #919191;
+//   }
+// }
+
+.alert--disabled {
+  background: #c1c1c11c;
+  //border: 2px solid red;
+
+  * {
+    //color: #919191;
   }
 }
