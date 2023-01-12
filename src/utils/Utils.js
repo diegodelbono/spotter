@@ -4,5 +4,6 @@ export const alertsFailedUrlCount = "http://api.paneles.spotter.uy:8081/alarmash
 export const alertsOpenUrl = "http://api.paneles.spotter.uy:8081/alarmashik/api/panelevent/pause/2/";
 export const alertsOpenUrlCount = "http://api.paneles.spotter.uy:8081/alarmashik/api/panelevent/pause/2/count/";
 export const alertListDisabled = "http://hikgwalarms.spotter.uy:8081/alarmashik/api/panelevent/zabbix/";
+export const alertModalList = "http://api.paneles.spotter.uy:8081/alarmashik/api/app/sos/";
 export const FAILED = "1";
 export const OPEN = "2";

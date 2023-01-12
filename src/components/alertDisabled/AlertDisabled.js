@@ -4,10 +4,6 @@ import axios from "axios";
 
 const AlertDisabled = ({ name, date, id, alert, setAlert, item }) => {
   const underClick = async () => {
-    console.log("alert", alert);
-
-    console.log("item.event_id", item.event_id);
-
     const alerts = alert.filter((i) => i.event_id !== item.event_id);
     setAlert(alerts);
 
@@ -36,7 +32,7 @@ const AlertDisabled = ({ name, date, id, alert, setAlert, item }) => {
           <div className="alert__item">
             <div className="time font-large font-bold">
               <div className="time__item">
-                <span class="alert-tag alert-tag--inline">Sin conexión</span>
+                <span className="alert-tag alert-tag--inline">Sin conexión</span>
                 <span className="number">{finalMomentDay}</span>
                 <div onClick={() => underClick()} className="alert__close">
                   <div className="icon icon--close" />
