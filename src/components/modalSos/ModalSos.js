@@ -4,28 +4,6 @@ import axios from "axios";
 const ModalSos = ({ url }) => {
   const [modal, setModal] = useState([]);
 
-  //  const fileInputRef = useRef();
-  //  const isFile = value && typeof value.name === "string";
-  //  const isValueValid = value && value.data && value.contentType;
-
-  // fetch(`data:${value.contentType};base64,${value.data}`)
-  //   .then((res) => res.blob())
-  //   .then((blob) => {
-  //     onChange(new File([blob], value.fileName));
-  //   });
-
-  // if (!isFile) {
-  //   if (isValueValid) {
-  //     fetch(`data:${value.contentType};base64,${value.data}`)
-  //       .then((res) => res.blob())
-  //       .then((blob) => {
-  //         onChange(new File([blob], value.fileName));
-  //       });
-  //   } else if (value !== null) {
-  //     onChange(null);
-  //   }
-  // }
-
   function connectWithApi() {
     axios({
       url: url,
@@ -61,16 +39,15 @@ const ModalSos = ({ url }) => {
       });
   };
 
+  const item = "diego";
+
   return (
     <>
       {modal.map((item) => (
         <div className={`modal alert--sos`} key={item.id}>
           <div className="modal__container">
             <div className="modal__figure">
-              <figure className="figure">
-                <img src={`data:image/jpeg;base64,${item.imagen}`} />
-                {/* <img src={URL.createObjectURL(`data:image/jpeg;base64,${this.state.image}`)} /> */}
-              </figure>
+              <figure className="figure">{item.imagen && <img src={`data:image/jpeg;base64,${item.imagen}`} />}</figure>
             </div>
             <div className="modal__content">
               <div class="modal__item">
@@ -96,18 +73,6 @@ const ModalSos = ({ url }) => {
           <div className="alert__icon alert__btn js-modal" onClick={() => underClick(item)}>
             <div className="icon icon--close" />
           </div>
-
-          {/* <View
-            className="avatar"
-            style={
-              isFile
-                ? {
-                    backgroundImage: `url(${URL.createObjectURL(value)})`,
-                    backgroundSize: "cover",
-                  }
-                : null
-            }
-          /> */}
         </div>
       ))}
     </>
